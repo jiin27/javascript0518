@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도형무한회전</title>
+    <style>
+        h1 {
+            width: 150px;
+            height: 150px;
+            background: rgb(149, 225, 255);
+            font-size: 90px;
+            text-align: center;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+        }
+    </style>
+    <script>
+        let r = 0; //각도를 누적시킬 전역변수
+        let flag = true;
+
+        //물체 회전시키기
+        function rotate() {
+            //console.log("rotate() 호출하기");
+
+            //처리 대상이 흑백논리, 2가지 경우일 경우 논리값!을 활용. 논리값에 활용하는 flag을 어느 것에 적용할 것인지가 중요하다.
+            if (flag) {
+                r++; //우측으로 돌 때
+            } else {
+                r--; //좌측으로 돌 때
+            }
+            if(r%180==0){
+                flag=!flag;
+            }
+            let h1 = document.querySelector("h1");
+            h1.style.transform = "rotate(" + r + "deg)";
+        }
+
+        addEventListener("load", function () {
+            setInterval("rotate()", 10);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>★</h1>
+</body>
+
+</html>

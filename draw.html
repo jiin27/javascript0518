@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>draw</title>
+    <style>
+        #draw {
+            width: 200px;
+            height: 250px;
+            border-radius: 15px;
+            background: rgb(247, 255, 176);
+        }
+    </style>
+    <script>
+        let draw;
+        let a=0.1;
+        let x=0;
+        let flag=false;
+
+        function move() {
+            //draw를 옮겨지게. 위치 이동
+            if(flag){
+                draw.style.left=parseFloat(draw.style.left)+a*(x-parseFloat(draw.style.left))+"px";
+            } 
+        }
+
+        function init() {
+            draw = document.getElementById("draw");
+            draw.style.width=200+"px";
+            draw.style.height=250+"px";
+            draw.style.background = "rgb(247, 255, 176)";
+            draw.style.position = "absolute";
+            draw.style.left = -150 + "px";
+        }
+
+        function loop(){
+            move();
+        }
+
+        addEventListener("load", function () {
+            init();
+            setInterval("loop()", 10);
+            draw = document.getElementById("draw");
+            draw.addEventListener("click", function(){
+                move();
+                flag=!flag;
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="draw">
+        <ul>☆Home</ul>
+        <ul>☆About</ul>
+        <ul>☆Product</ul>
+        <ul>☆Contact</ul>
+    </div>
+</body>
+
+</html>
